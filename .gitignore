@@ -1,0 +1,4 @@
+.idea
+poetry.toml
+env
+db.sqlite3
