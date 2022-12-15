@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Message from "../component/Message";
 import Loader from "../component/Loader";
@@ -14,18 +14,19 @@ function LoginScreen() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const location = useLocation();
-    const redirect = location.search ? location.search.split('=')[1]
-        : '/';
+    const [searchParams] = useSearchParams();
+    const redirection = searchParams.get('redirect')
 
     const userLogin = useSelector(state => state.userLogin)
     const {error, loading, userInfo} = userLogin
 
     useEffect(() => {
         if (userInfo) {
-            navigate(redirect)
+            navigate({
+                pathname: `/${redirection}`
+            })
         }
-    }, [userInfo, redirect])
+    }, [userInfo, redirection])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -64,7 +65,7 @@ function LoginScreen() {
             </Form>
             <Row className={'py-3'}>
                 <Col>
-                    New Customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+                    New Customer? <Link to={redirection ? `/register?redirect=${redirection}` : '/register'}>
                     Register</Link>
                 </Col>
             </Row>
