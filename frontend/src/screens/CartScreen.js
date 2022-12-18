@@ -92,7 +92,6 @@ function CartScreen() {
                             acc + item.qty * item.price, 0).toFixed(2)})
 
                         </ListGroup.Item>
-                    </ListGroup>
                     <ListGroup.Item>
                         <Button
                             type="button"
@@ -101,7 +100,7 @@ function CartScreen() {
                             onClick={checkOutHandler}>
                             Proceed to Checkout
                         </Button></ListGroup.Item>
-
+                    </ListGroup>
                 </Card>
             </Col>
         </Row>
