@@ -42,7 +42,6 @@ def updateUserProfile(request):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
@@ -59,8 +58,6 @@ def getUsers(request):
     return Response(serializer.data)
 
 
-
-
 @api_view(['POST'])
 def registerUser(request):
     data = request.data
@@ -75,5 +72,37 @@ def registerUser(request):
         serializer = UserSchemaWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message = {'detail':'User with this email already exists'}
+        message = {'detail': 'User with this email already exists'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteUser(request, pk):
+    user_for_deletion = User.objects.get(id=pk)
+    user_for_deletion.delete()
+    return Response('User was deleted')
+
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def getUsersById(request, pk):
+    user = User.objects.get(id=pk)
+    serializer = UserSchema(user, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateUser(request, pk):
+    user = User.objects.get(id=pk)
+    data = request.data
+
+    user.first_name = data['name']
+    user.username = data['email']
+    user.email = data['email']
+    user.is_staff = data['isAdmin']
+    user.save()
+
+    serializer = UserSchema(user, many=False)
+    return Response(serializer.data)

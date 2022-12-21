@@ -8,17 +8,18 @@ import { listProductdetails } from "../actions/productActions"
 import {useDispatch, useSelector} from "react-redux";
 
 
-function ProductScreen({ match, history }) {
+function ProductScreen() {
     const [qty, setQty] = useState(1)
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const {id} = useParams();
-    const productDetails = useSelector(state => state.productDetails)
+    const productDetails = useSelector((state) => state.productDetails)
     const {loading, error, product} = productDetails
+
     useEffect(() => {
         dispatch(listProductdetails(id))
-    }, [dispatch, match])
+    }, [dispatch, id])
 
     const addToCartHandler = () => {
         navigate(`/cart/${id}?qty=${qty}`)
