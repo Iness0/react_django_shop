@@ -1,8 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { productDeleteReducer, productListReducer, productDetailsReducer, productCreateReducer, productUpdateReducer } from './reducers/productReducers'
+import {productTopRatedReducer, productCreateReviewReducer, productDeleteReducer, productListReducer, productDetailsReducer, productCreateReducer, productUpdateReducer } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import {userUpdateReducer, userDeleteReducer, userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer } from "./reducers/userReducers";
-import {orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer} from "./reducers/orderReducers";
+import {
+    orderListReducer,
+    orderCreateReducer,
+    orderDetailsReducer,
+    orderPayReducer,
+    orderListMyReducer,
+    orderDeliverReducer
+} from "./reducers/orderReducers";
+
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
     ? JSON.parse(localStorage.getItem('cartItems'))
@@ -31,6 +39,9 @@ const store = configureStore({ reducer: {
     productDetails: productDetailsReducer,
     productDelete: productDeleteReducer,
     productUpdate: productUpdateReducer,
+    productCreate: productCreateReducer,
+    productReviewCreate: productCreateReviewReducer,
+    productTopRated: productTopRatedReducer,
     cart: cartReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -42,8 +53,10 @@ const store = configureStore({ reducer: {
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
+    orderList: orderListReducer,
     orderListMy: orderListMyReducer,
-    productCreate: productCreateReducer,
+    orderDeliver: orderDeliverReducer,
+
     },
     preloadedState: initialState,
     })
