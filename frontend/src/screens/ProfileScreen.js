@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import Message from "../component/Message";
 import Loader from "../component/Loader";
-import {getUserDetails, register, updateUserProfile} from "../actions/userActions";
+import {getUserDetails, updateUserProfile} from "../actions/userActions";
 import {USER_UPDATE_PROFILE_RESET} from '../constants/userConstants'
 import { listMyOrders } from "../actions/orderActions";
 import { LinkContainer } from 'react-router-bootstrap'
@@ -21,7 +21,6 @@ function ProfileScreen() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const location = useLocation();
 
     const userDetails = useSelector(state => state.userDetails)
     const { error, loading, user } = userDetails
@@ -48,7 +47,7 @@ function ProfileScreen() {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, userInfo, user, success])
+    }, [dispatch, userInfo, user, success, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault()

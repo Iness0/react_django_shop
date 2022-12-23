@@ -22,12 +22,7 @@ import {
     PRODUCT_TOP_SUCCESS,
 } from "../constants/productConstants";
 import axios from "axios";
-import {
-    USER_DETAILS_SUCCESS,
-    USER_UPDATE_FAIL,
-    USER_UPDATE_REQUEST,
-    USER_UPDATE_SUCCESS
-} from "../constants/userConstants";
+
 
 
 export const listProducts = (keyword = '', page=1) => async (dispatch) => {

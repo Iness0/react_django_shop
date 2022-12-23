@@ -37,7 +37,7 @@ function OrderScreen() {
             dispatch(getOrderDetails(orderId))
         } else {
             setSdkReady(true);
-        }}, [order, orderId, userInfo, dispatch, successPay, successDeliver ])
+        }}, [order, orderId, userInfo, dispatch, successPay, successDeliver, navigate ])
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult))

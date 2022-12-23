@@ -166,7 +166,7 @@ function ProductScreen() {
                                                         <Form.Control as='textarea' row='6' value={comment}
                                                                       onChange={(e) => setComment(e.target.value)}/>
                                                     </Form.Group>
-                                                    <Button disabled={loadingProductReview} type='submit' variant='primary'>
+                                                    <Button disabled={loadingProductReview} type='submit' variant='primary' className={'my-3'}>
                                                         Submit
                                                     </Button>
                                                 </Form>

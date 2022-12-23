@@ -40,7 +40,7 @@ function ProductListScreen() {
     } else {
         dispatch(listProducts(keyword, pagen))
     }
-    }, [keyword, dispatch, navigate, userInfo, successDelete, createdProduct, pagen]);
+    }, [keyword, dispatch, navigate, userInfo, successDelete, createdProduct, pagen, successCreate]);
 
 
     const deleteHandler = (id) => {

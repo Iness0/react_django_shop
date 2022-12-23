@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate} from "react-router-dom";
 import { Button, Table } from "react-bootstrap";
@@ -7,7 +7,7 @@ import Message from "../component/Message";
 import Loader from "../component/Loader";
 import { listUsers, deleteUser } from "../actions/userActions";
 
-function UserListScreen({history}) {
+function UserListScreen() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ function UserListScreen({history}) {
     } else {
             navigate('/login')
         }
-    }, [dispatch, navigate, userInfo, successDelete, history]);
+    }, [dispatch, navigate, userInfo, successDelete]);
 
 
     const deleteHandler = (id) => {

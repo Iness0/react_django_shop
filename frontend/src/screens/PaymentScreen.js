@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import {Form, Button, FormGroup, Col} from "react-bootstrap";
+import {Form, Button, Col} from "react-bootstrap";
 import FormContainer from "../component/FormContainer";
 import {useNavigate} from "react-router-dom";
 import CheckoutSteps from '../component/CheckoutComponent'
